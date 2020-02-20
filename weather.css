@@ -1,0 +1,47 @@
+
+.col-sm-4 {
+
+background-color: rgb(229, 255, 205);
+padding-left: 10px;
+
+}
+
+#headertitle {
+    text-align: center;
+}
+
+.header {
+    padding: 5px;
+    text-align: center;
+    background: #008aca;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+.searchbar {
+padding-top: 20px;
+padding-left: 5px
+}
+
+.fivedaycard {
+background-color: #eef9ff; 
+margin-left: 15px;
+margin-top: 15px;
+
+}
+
+.fivedaycardcolor {
+    background-color: #e3f6ff;
+}
+
+.list-group {
+    margin-top: 20px;
+    
+}
+
+.day-forecast {
+    margin-top: 10px;
+    font-size: 30px;
+
+}
