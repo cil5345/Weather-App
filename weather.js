@@ -2,7 +2,27 @@
 let timer = moment().format("MMM Do YY");
 $("#timer").text(timer)
 
+let cityHistory = []
+let lastCityInput = JSON.parse(localStorage.getItem("cityHistory"));
 
+console.log(lastCityInput)
+if (lastCityInput !== null) {
+    cityHistory = lastCityInput;
+}
+
+function loadSearchHistory() {
+    $(".list-group").empty();
+    for (let i = 0; i < cityHistory.length; i++) {
+        let cityList = $("<li>")
+        cityList.addClass("list-group-item");
+        cityList.text(cityHistory[i]);
+        $(".list-group").prepend(cityList);
+    }
+}
+
+loadSearchHistory();
+
+console.log(cityHistory)
 // magnify button to search for weather
 $("#search-button").on("click", function (event) {
     event.preventDefault();
@@ -16,19 +36,14 @@ $("#search-button").on("click", function (event) {
     // console.log(cityInput)
     // console.log(queryURL)
 
+    cityHistory.push(cityInput)
+    loadSearchHistory();
+    console.log(cityHistory)
+
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
 
 
-    localStorage.setItem("cityInput", JSON.stringify(cityInput));
-    let lastCityInput = JSON.parse(localStorage.getItem("cityInput"));
-    let cityList = $("<li>").text(lastCityInput);
-    // console.log(lastCityInput)
-    // list.text(lastCityInput);
-    // list.val(lastCityInput);
-
-    cityList.addClass("list-group-item");
-    $(".list-group").prepend(cityList);
-
-// ===================== main card ============================================
+    // ===================== main card ============================================
 
     // $("#city-input").empty()
     $.ajax({
@@ -135,6 +150,7 @@ $.ajax({
 
     let weatherDiv = $("#fiveDayDiv");
     weatherDiv.empty();
+    console.log(list)
 
 
     // console.log(list[0].weather[0].icon)
