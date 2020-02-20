@@ -28,12 +28,7 @@ $("#search-button").on("click", function (event) {
     cityList.addClass("list-group-item");
     $(".list-group").prepend(cityList);
 
-
-
-
-
-
-
+// ===================== main card ============================================
 
     // $("#city-input").empty()
     $.ajax({
@@ -48,28 +43,17 @@ $("#search-button").on("click", function (event) {
         let iconcode = response.weather[0].icon
         let iconURL = "http://openweathermap.org/img/w/" + iconcode + ".png";
 
-        console.log(response)
-
-
+        // console.log(response)
 
         $("#wicon").attr("src", iconURL);
-
-
-
-
-
-
-
         $(".city").html(city);
         $(".temp").html("<span>Temperature : " + temperature + " &#8457" + "</span>");
         $(".humidity").html("Humidity: " + humidity + "%" + "</span>");
         $(".wind").html("Windspeed: " + wind + "</span>");
-
-
     });
 
     // ===================== main card ============================================
-
+    // ===================== 5 day card ============================================
 
     $.ajax({
         url: fiveDayQueryURL,
@@ -78,8 +62,6 @@ $("#search-button").on("click", function (event) {
 
         let weatherDiv = $("#fiveDayDiv");
         weatherDiv.empty();
-
-
 
         for (let i = 0; i < list.length; i = i + 8) {
             const temp = list[i + 5];
@@ -97,7 +79,7 @@ $("#search-button").on("click", function (event) {
                             </div>
                         </div>`
             weatherDiv.append(divItem);
-    
+
 
         }
 
@@ -132,9 +114,7 @@ $.ajax({
     let iconcode = response.weather[0].icon
     let iconURL = "http://openweathermap.org/img/w/" + iconcode + ".png";
 
-    console.log(response)
-
-
+    // console.log(response)
 
     $("#wicon").attr("src", iconURL);
     $(".city").html(city);
@@ -157,7 +137,7 @@ $.ajax({
     weatherDiv.empty();
 
 
-    console.log(list[0].weather[0].icon)
+    // console.log(list[0].weather[0].icon)
 
     for (let i = 0; i < list.length; i = i + 8) {
         const temp = list[i + 5];
